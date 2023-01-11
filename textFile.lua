@@ -22,8 +22,6 @@ function create(args)
 	newFile["origin"] = os.getComputerID()
 	newFile["version"] = 1
 	newFile["size"] = 28 -- header size
-
-	
 	
 	function saveFile()
 		local file = io.open(args["fileName"], "wb")
@@ -52,8 +50,6 @@ function create(args)
 	saveFile()
 	return open(args)
 end
-
-
 
 
 -- function for opening existing file
@@ -190,7 +186,6 @@ function open(args)
 			error("N cannot be greater than the remaning length of the string")
 		end
 	
-		
 		local charString = ""
 		local colorString = ""
 		local bgString = ""
