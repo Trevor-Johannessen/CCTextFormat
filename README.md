@@ -1,3 +1,4 @@
+
 # CCTextFormat
  A test of creating a text file format for computercraft
 
@@ -37,7 +38,11 @@
 	* Color		- 4 bits
 	* Character	- 8 bits
 
+
 <table>
+	<tr>
+		<td><---- 8 bits ----></td>
+	</tr>
 	<tr>
 		<td>Created Year</td>
 		<td>Created Month</td>
@@ -65,7 +70,7 @@
 	<tr>
 		<td>Accessed Minute</td>
 		<td>Accessed Second</td>
-		<td>Machine Origin</td>
+		<td colspan=2>Machine Origin</td>
 	</tr>
 	<tr>
 		<td>Version no.</td>
@@ -74,6 +79,6 @@
 		<td></td>
 	</tr>
 	<tr>
-		<td>File Size</td>
+		<td colspan=4>File Size</td>
 	</tr>
 </table>
