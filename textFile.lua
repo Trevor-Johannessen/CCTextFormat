@@ -99,8 +99,6 @@ function open(args)
 	while i < size[1] do
 		local colors, character, nextIndex = string.unpack("I1B", fileBinary, i)
 		body[#body+1] = {color=bit.band(3, colors), background=bit.blshift(colors, -2), character=character}
-		print("i = " .. i)
-		print(colors .. "\t" .. character)
 		i=nextIndex
 	end
 	-- Pack headers into binary string
@@ -135,7 +133,6 @@ function open(args)
 		openedFile:write(packHeaders())
 		for k, pixel in pairs(body) do
 			local colors = pixel["color"] + bit.blshift(pixel["background"], 2)
-			print("Saving: " .. colors .. " " .. pixel["character"])
 			openedFile:write(string.pack("I1B", colors, pixel["character"]))
 		end
 		openedFile:close()
@@ -182,6 +179,30 @@ function open(args)
 		print("size:\t" .. size[1])
 	end
 	
+	-- retrieves n characters from given starting point
+	function file:retrieve(n, start)
+		local start = start or 1
+		if n == nil then
+			error("Retrieve requires the # of characters to retrieve")
+		elseif start > #body then
+			error("Start cannot be larger than the size of the string.")
+		elseif n > #body-start+1 then
+			error("N cannot be greater than the remaning length of the string")
+		end
+	
+		
+		local charString = ""
+		local colorString = ""
+		local bgString = ""
+		
+		for i = start, start+n-1 do		
+			charString = charString .. string.char(body[i].character)
+			colorString = colorString .. string.char(body[i].color + 97)
+			bgString = bgString .. string.char(body[i].background + 97)
+		end
+		
+		return charString, colorString, bgString
+	end
 	
 	file:save() -- save new last accessed date
 	
