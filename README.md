@@ -2,6 +2,28 @@
 # CCTextFormat
  A test of creating a text file format for computercraft
 
+### Functions:
+* create{fileName: string}
+* append{color: int(0-15), background: int(0-15), character: int(from charset)}
+* dumpBody()
+* dumpHeaders()
+* retrieve(n: int, start: int)
+* save()
+
+### Usage:
+* #### Create new file:
+	```testText = textformat.create{fileName="testText"}``` 
+* #### Append character to file:
+	```testText:append{color=15, backgronud=0, character=97}```
+* #### Show body contents:
+	```testText:dumpBody()```
+* #### Show header contents:
+	```testText:dumpHeaders()```
+* #### Retrieve character information: 
+	```testText:retrieve(4, 1)```
+* #### Save file:
+	```testText:save()```
+
 ### Text File Format Specification:
 
 * ### Headers:
